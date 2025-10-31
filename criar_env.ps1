@@ -32,7 +32,7 @@ JWT_EXPIRATION=86400
 # Configuração da Aplicação
 APP_ENV=production
 APP_DEBUG=false
-APP_URL=http://localhost:8000
+APP_URL=https://adv.sgqoti.com.br
 
 # Configuração de Email
 MAIL_HOST=smtp.hostinger.com
