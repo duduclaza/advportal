@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - AdvPortal</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Dashboard - Advocacia Marques</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 <body>
-    <div class="dashboard">
+    <div class="dashboard-layout">
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
@@ -61,31 +61,31 @@
             </div>
 
             <div class="content-body">
-                <!-- Estatísticas -->
+                <!-- Cards de Estatísticas -->
                 <div class="stats-grid" id="statsGrid">
-                    <div class="stat-card">
-                        <h4>Total de Casos</h4>
-                        <div class="stat-value" id="totalCasos">0</div>
+                    <div class="stat-card blue">
+                        <h3>Total de Casos</h3>
+                        <p class="number" id="totalCasos">0</p>
                     </div>
-                    <div class="stat-card" style="border-left-color: var(--success);">
-                        <h4>Casos Abertos</h4>
-                        <div class="stat-value" id="casosAbertos">0</div>
+                    <div class="stat-card green">
+                        <h3>Casos Abertos</h3>
+                        <p class="number" id="casosAbertos">0</p>
                     </div>
-                    <div class="stat-card" style="border-left-color: var(--warning);">
-                        <h4>Em Andamento</h4>
-                        <div class="stat-value" id="casosAndamento">0</div>
+                    <div class="stat-card orange">
+                        <h3>Em Andamento</h3>
+                        <p class="number" id="casosAndamento">0</p>
                     </div>
-                    <div class="stat-card" style="border-left-color: var(--danger);">
-                        <h4>Casos Urgentes</h4>
-                        <div class="stat-value" id="casosUrgentes">0</div>
+                    <div class="stat-card red">
+                        <h3>Casos Urgentes</h3>
+                        <p class="number" id="casosUrgentes">0</p>
                     </div>
                 </div>
 
                 <!-- Casos Recentes -->
                 <div class="card">
                     <div class="card-header">
-                        <h3>Casos Recentes</h3>
-                        <a href="casos.html" class="btn btn-primary" style="width: auto; padding: 8px 16px;">Ver Todos</a>
+                        <h2 class="card-title">Casos Recentes</h2>
+                        <a href="casos.html" class="btn btn-secondary">Ver Todos</a>
                     </div>
                     <div class="card-body">
                         <div class="table-container">
