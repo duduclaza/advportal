@@ -24,3 +24,11 @@ define('JWT_EXPIRATION', $_ENV['JWT_EXPIRATION'] ?? 86400);
 define('APP_ENV', $_ENV['APP_ENV'] ?? 'development');
 define('APP_DEBUG', $_ENV['APP_DEBUG'] ?? 'true');
 define('APP_URL', $_ENV['APP_URL'] ?? 'http://localhost:8000');
+
+define('MAIL_HOST', $_ENV['MAIL_HOST'] ?? 'smtp.hostinger.com');
+define('MAIL_PORT', $_ENV['MAIL_PORT'] ?? 465);
+define('MAIL_ENCRYPTION', $_ENV['MAIL_ENCRYPTION'] ?? 'ssl');
+define('MAIL_USERNAME', $_ENV['MAIL_USERNAME'] ?? '');
+define('MAIL_PASSWORD', $_ENV['MAIL_PASSWORD'] ?? '');
+define('MAIL_FROM_ADDRESS', $_ENV['MAIL_FROM_ADDRESS'] ?? 'noreply@advportal.com');
+define('MAIL_FROM_NAME', $_ENV['MAIL_FROM_NAME'] ?? 'AdvPortal');

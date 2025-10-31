@@ -5,6 +5,7 @@
 
 require_once __DIR__ . '/../config/database_env.php';
 require_once __DIR__ . '/../models/Usuario.php';
+require_once __DIR__ . '/../helpers/EmailHelper.php';
 
 class UsuarioController {
     private $db;
@@ -61,11 +62,24 @@ class UsuarioController {
             // Gerar código de confirmação
             $codigo = $this->usuario->gerarCodigoConfirmacao();
             
-            // TODO: Enviar email com código
+            // Enviar email com código de confirmação
+            $emailEnviado = EmailHelper::enviarCodigoConfirmacao(
+                $data['email'],
+                $data['nome'],
+                $codigo
+            );
             
-            return $this->response(201, 'Usuário criado com sucesso. Email de confirmação enviado.', [
-                'codigo' => $codigo // Remover em produção
-            ]);
+            $resposta = [
+                'mensagem' => 'Usuário criado com sucesso. Email de confirmação enviado.'
+            ];
+            
+            // Em desenvolvimento, incluir o código na resposta
+            if (APP_DEBUG === 'true') {
+                $resposta['codigo'] = $codigo;
+                $resposta['email_enviado'] = $emailEnviado;
+            }
+            
+            return $this->response(201, 'Usuário criado com sucesso. Email de confirmação enviado.', $resposta);
         }
 
         return $this->response(500, 'Erro ao criar usuário');

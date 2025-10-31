@@ -6,6 +6,7 @@
 require_once __DIR__ . '/../config/database_env.php';
 require_once __DIR__ . '/../config/jwt.php';
 require_once __DIR__ . '/../models/Usuario.php';
+require_once __DIR__ . '/../helpers/EmailHelper.php';
 
 class AuthController {
     private $db;
@@ -83,12 +84,24 @@ class AuthController {
         $codigo = $this->usuario->gerarCodigoConfirmacao();
 
         if ($codigo) {
-            // TODO: Enviar email com o código
-            // Por enquanto, retornar o código na resposta (apenas para desenvolvimento)
-            return $this->response(200, 'Código enviado para o email', [
-                'codigo' => $codigo, // Remover em produção
+            // Enviar email com o código
+            $emailEnviado = EmailHelper::enviarCodigoConfirmacao(
+                $usuario_data['email'],
+                $usuario_data['nome'],
+                $codigo
+            );
+            
+            $resposta = [
                 'mensagem' => 'Código de confirmação enviado para o email'
-            ]);
+            ];
+            
+            // Em desenvolvimento, incluir o código na resposta
+            if (APP_DEBUG === 'true') {
+                $resposta['codigo'] = $codigo;
+                $resposta['email_enviado'] = $emailEnviado;
+            }
+            
+            return $this->response(200, 'Código enviado para o email', $resposta);
         }
 
         return $this->response(500, 'Erro ao gerar código');
