@@ -1,0 +1,14 @@
+RewriteEngine On
+RewriteBase /
+
+# API Routes
+RewriteCond %{REQUEST_URI} ^/api/
+RewriteRule ^api/(.*)$ api/index.php [QSA,L]
+
+# Public files (CSS, JS, images)
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Redirect all other requests to public/index.html
+RewriteRule ^$ public/index.html [L]
+RewriteRule ^(.*)$ public/$1 [L]

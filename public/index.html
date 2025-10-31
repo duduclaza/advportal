@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdvPortal - Sistema de Gestão Jurídica</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M30 5L5 20L30 35L55 20L30 5Z" fill="#2563eb"/>
+                    <path d="M30 35L5 20V45L30 55V35Z" fill="#1e40af" opacity="0.7"/>
+                    <path d="M30 35V55L55 45V20L30 35Z" fill="#1e3a8a" opacity="0.5"/>
+                </svg>
+            </div>
+            <h1>AdvPortal</h1>
+            <p class="subtitle">Sistema de Gestão de Processos Jurídicos</p>
+
+            <!-- Formulário de Login -->
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-primary">Entrar</button>
+                <div class="form-footer">
+                    <a href="#" id="primeiroAcessoLink">Primeiro Acesso</a>
+                </div>
+            </form>
+
+            <!-- Formulário de Primeiro Acesso -->
+            <form id="primeiroAcessoForm" class="auth-form" style="display: none;">
+                <div class="form-step" id="step1">
+                    <div class="form-group">
+                        <label for="emailCodigo">Email</label>
+                        <input type="email" id="emailCodigo" name="email" required placeholder="seu@email.com">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="solicitarCodigoBtn">Solicitar Código</button>
+                </div>
+
+                <div class="form-step" id="step2" style="display: none;">
+                    <div class="form-group">
+                        <label for="codigo">Código de Confirmação</label>
+                        <input type="text" id="codigo" name="codigo" required placeholder="000000" maxlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label for="novaSenha">Nova Senha</label>
+                        <input type="password" id="novaSenha" name="novaSenha" required placeholder="••••••••" minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmarSenha">Confirmar Senha</label>
+                        <input type="password" id="confirmarSenha" name="confirmarSenha" required placeholder="••••••••" minlength="6">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Confirmar</button>
+                </div>
+
+                <div class="form-footer">
+                    <a href="#" id="voltarLoginLink">Voltar ao Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AdvPortal</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>AdvPortal</h2>
+            </div>
+            <nav class="sidebar-menu" id="sidebarMenu">
+                <a href="dashboard.html" class="menu-item active">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    Dashboard
+                </a>
+                <a href="casos.html" class="menu-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    Casos
+                </a>
+                <a href="novo-caso.html" class="menu-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                    Novo Caso
+                </a>
+                <!-- Menu para Super Admin e Admin -->
+                <div id="adminMenu" style="display: none;">
+                    <a href="usuarios.html" class="menu-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                        </svg>
+                        Usuários
+                    </a>
+                </div>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar"></div>
+                    <div class="user-details">
+                        <h4 id="userName"></h4>
+                        <p id="userRole"></p>
+                    </div>
+                </div>
+                <button class="btn btn-secondary" onclick="logout()">Sair</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-header">
+                <h1>Dashboard</h1>
+            </div>
+
+            <div class="content-body">
+                <!-- Estatísticas -->
+                <div class="stats-grid" id="statsGrid">
+                    <div class="stat-card">
+                        <h4>Total de Casos</h4>
+                        <div class="stat-value" id="totalCasos">0</div>
+                    </div>
+                    <div class="stat-card" style="border-left-color: var(--success);">
+                        <h4>Casos Abertos</h4>
+                        <div class="stat-value" id="casosAbertos">0</div>
+                    </div>
+                    <div class="stat-card" style="border-left-color: var(--warning);">
+                        <h4>Em Andamento</h4>
+                        <div class="stat-value" id="casosAndamento">0</div>
+                    </div>
+                    <div class="stat-card" style="border-left-color: var(--danger);">
+                        <h4>Casos Urgentes</h4>
+                        <div class="stat-value" id="casosUrgentes">0</div>
+                    </div>
+                </div>
+
+                <!-- Casos Recentes -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Casos Recentes</h3>
+                        <a href="casos.html" class="btn btn-primary" style="width: auto; padding: 8px 16px;">Ver Todos</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Nº Processo</th>
+                                        <th>Título</th>
+                                        <th>Cliente</th>
+                                        <th>Status</th>
+                                        <th>Prioridade</th>
+                                        <th>Data Abertura</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="casosRecentes">
+                                    <tr>
+                                        <td colspan="6" style="text-align: center; padding: 40px;">
+                                            Carregando...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casos - AdvPortal</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>AdvPortal</h2>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="dashboard.html" class="menu-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    Dashboard
+                </a>
+                <a href="casos.html" class="menu-item active">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    Casos
+                </a>
+                <a href="novo-caso.html" class="menu-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                    Novo Caso
+                </a>
+                <div id="adminMenu" style="display: none;">
+                    <a href="usuarios.html" class="menu-item">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                        </svg>
+                        Usuários
+                    </a>
+                </div>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar"></div>
+                    <div class="user-details">
+                        <h4 id="userName"></h4>
+                        <p id="userRole"></p>
+                    </div>
+                </div>
+                <button class="btn btn-secondary" onclick="logout()">Sair</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-header">
+                <h1>Todos os Casos</h1>
+                <a href="novo-caso.html" class="btn btn-primary" style="width: auto; padding: 10px 20px;" id="btnNovoCaso">+ Novo Caso</a>
+            </div>
+
+            <div class="content-body">
+                <!-- Filtros -->
+                <div class="card" style="margin-bottom: 20px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <div class="form-group" style="margin: 0;">
+                            <label for="filtroStatus">Status</label>
+                            <select id="filtroStatus" style="width: 100%; padding: 8px; border: 1px solid var(--gray-300); border-radius: 6px;">
+                                <option value="">Todos</option>
+                                <option value="aberto">Aberto</option>
+                                <option value="em_andamento">Em Andamento</option>
+                                <option value="suspenso">Suspenso</option>
+                                <option value="encerrado">Encerrado</option>
+                                <option value="arquivado">Arquivado</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin: 0;">
+                            <label for="filtroPrioridade">Prioridade</label>
+                            <select id="filtroPrioridade" style="width: 100%; padding: 8px; border: 1px solid var(--gray-300); border-radius: 6px;">
+                                <option value="">Todas</option>
+                                <option value="baixa">Baixa</option>
+                                <option value="media">Média</option>
+                                <option value="alta">Alta</option>
+                                <option value="urgente">Urgente</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin: 0;">
+                            <label for="filtroBusca">Buscar</label>
+                            <input type="text" id="filtroBusca" placeholder="Título, nº processo, cliente..." style="width: 100%; padding: 8px; border: 1px solid var(--gray-300); border-radius: 6px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabela de Casos -->
+                <div class="card">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nº Processo</th>
+                                    <th>Título</th>
+                                    <th>Cliente</th>
+                                    <th>Advogado</th>
+                                    <th>Status</th>
+                                    <th>Prioridade</th>
+                                    <th>Data Abertura</th>
+                                    <th>Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody id="casosList">
+                                <tr>
+                                    <td colspan="8" style="text-align: center; padding: 40px;">
+                                        Carregando...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/casos.js"></script>
+</body>
+</html>

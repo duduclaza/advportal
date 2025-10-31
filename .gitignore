@@ -1,0 +1,35 @@
+# Configurações
+api/config/database.php
+.env
+
+# Logs
+*.log
+logs/
+
+# Cache
+cache/
+*.cache
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# PHP
+vendor/
+composer.lock
+
+# Uploads
+uploads/*
+!uploads/.gitkeep
+
+# Temporários
+tmp/
+temp/
+*.tmp
