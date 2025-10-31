@@ -120,9 +120,9 @@ INSERT INTO perfis (nome, descricao, nivel) VALUES
 ('Advogado', 'Advogado responsável por casos', 4),
 ('Cliente', 'Cliente com casos no sistema', 5);
 
--- Inserir Super Admin padrão (senha: Admin@123)
+-- Inserir Super Admin padrão (senha: Pandora@1989)
 INSERT INTO usuarios (nome, email, senha, perfil_id, status, primeiro_acesso) VALUES
-('Super Admin', 'admin@advportal.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1, 'ativo', FALSE);
+('Clayton Dutra', 'du.claza@gmail.com', '$2y$10$rRxHpHvAXeaCEonfvRImAOGNtDdWyuiCRlEjc4pFf3MKBoC9yDYGO', 1, 'ativo', FALSE);
 
 -- Índices para melhor performance
 CREATE INDEX idx_usuarios_email ON usuarios(email);
