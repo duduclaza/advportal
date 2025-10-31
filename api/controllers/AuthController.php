@@ -3,7 +3,7 @@
  * Controller de Autenticação
  */
 
-require_once __DIR__ . '/../config/database.example.php';
+require_once __DIR__ . '/../config/database_env.php';
 require_once __DIR__ . '/../config/jwt.php';
 require_once __DIR__ . '/../models/Usuario.php';
 

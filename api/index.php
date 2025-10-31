@@ -1,8 +1,10 @@
 <?php
 /**
- * API Router Principal
+ * API Router Principal (Versão com .env)
  */
 
+// Carregar bootstrap
+require_once __DIR__ . '/bootstrap.php';
 require_once __DIR__ . '/config/cors.php';
 require_once __DIR__ . '/middleware/AuthMiddleware.php';
 require_once __DIR__ . '/controllers/AuthController.php';
@@ -102,7 +104,7 @@ if (preg_match('/^\/casos\/estatisticas$/', $uri) && $method === 'GET') {
 // Rota de perfis
 if (preg_match('/^\/perfis$/', $uri) && $method === 'GET') {
     require_once __DIR__ . '/models/Perfil.php';
-    require_once __DIR__ . '/config/database.example.php';
+    require_once __DIR__ . '/config/database_env.php';
     
     $database = new Database();
     $db = $database->getConnection();

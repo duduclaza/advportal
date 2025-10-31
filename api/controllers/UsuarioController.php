@@ -3,7 +3,7 @@
  * Controller de Usuários
  */
 
-require_once __DIR__ . '/../config/database.example.php';
+require_once __DIR__ . '/../config/database_env.php';
 require_once __DIR__ . '/../models/Usuario.php';
 
 class UsuarioController {

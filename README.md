@@ -42,17 +42,29 @@ git clone git@github.com:duduclaza/advportal.git
 cd advportal
 ```
 
-### 2. Configurar banco de dados
+### 2. Instalar dependências do Composer
+```bash
+composer install
+```
+
+### 3. Configurar variáveis de ambiente
+```bash
+# Copiar arquivo de exemplo
+cp .env.example .env
+
+# Editar .env com suas credenciais
+# Ou no Windows PowerShell:
+.\criar_env.ps1
+```
+
+### 4. Configurar banco de dados
 ```bash
 mysql -u root -p < database/schema.sql
 ```
 
-### 3. Configurar credenciais
-Edite o arquivo `api/config/database.php` com suas credenciais do MySQL.
-
-### 4. Iniciar servidor
+### 5. Iniciar servidor
 ```bash
-php -S localhost:8000 -t public
+php -S localhost:8000 -t .
 ```
 
 ## Funcionalidades
