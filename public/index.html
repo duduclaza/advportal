@@ -3,72 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AdvPortal - Sistema de Gestão Jurídica</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Advocacia Marques - Portal do Cliente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e3a5f',
+                        'primary-dark': '#152a47',
+                        accent: '#d4af37',
+                        'accent-dark': '#b8941f',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-    <div class="login-container">
-        <div class="login-box">
-            <div class="logo">
-                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<body class="min-h-screen bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center p-4">
+    <div class="w-full max-w-md">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 border-t-4 border-accent">
+            <!-- Logo -->
+            <div class="text-center mb-6">
+                <svg class="w-16 h-16 mx-auto mb-4" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M30 5L5 20L30 35L55 20L30 5Z" fill="#d4af37"/>
                     <path d="M30 35L5 20V45L30 55V35Z" fill="#1e3a5f" opacity="0.9"/>
                     <path d="M30 35V55L55 45V20L30 35Z" fill="#152a47" opacity="0.7"/>
                 </svg>
+                <h1 class="text-3xl font-bold text-primary mb-2">Advocacia Marques</h1>
+                <p class="text-gray-600 text-sm">Portal do Cliente</p>
             </div>
-            <h1>Advocacia Marques</h1>
-            <p class="subtitle">Portal do Cliente</p>
 
             <!-- Formulário de Login -->
-            <form id="loginForm" class="auth-form">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="seu@email.com"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition">
                 </div>
-                <div class="form-group">
-                    <label for="senha">Senha</label>
-                    <input type="password" id="senha" name="senha" required placeholder="••••••••">
+                <div>
+                    <label for="senha" class="block text-sm font-medium text-gray-700 mb-1">Senha</label>
+                    <input type="password" id="senha" name="senha" required placeholder="••••••••"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition">
                 </div>
-                <button type="submit" class="btn btn-primary">Entrar</button>
-                <div class="form-footer">
-                    <a href="#" id="primeiroAcessoLink">Primeiro Acesso</a>
+                <button type="submit" 
+                    class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-4 rounded-lg transition duration-200 transform hover:scale-105">
+                    Entrar
+                </button>
+                <div class="text-center mt-4">
+                    <a href="#" id="primeiroAcessoLink" class="text-primary hover:text-accent font-medium text-sm">
+                        Primeiro Acesso
+                    </a>
                 </div>
             </form>
 
             <!-- Formulário de Primeiro Acesso -->
-            <form id="primeiroAcessoForm" class="auth-form" style="display: none;">
-                <div class="form-step" id="step1">
-                    <div class="form-group">
-                        <label for="emailCodigo">Email</label>
-                        <input type="email" id="emailCodigo" name="email" required placeholder="seu@email.com">
+            <form id="primeiroAcessoForm" class="space-y-4 hidden">
+                <div id="step1">
+                    <div>
+                        <label for="emailCodigo" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="emailCodigo" name="email" required placeholder="seu@email.com"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition">
                     </div>
-                    <button type="button" class="btn btn-primary" id="solicitarCodigoBtn">Solicitar Código</button>
+                    <button type="button" id="solicitarCodigoBtn"
+                        class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-4 rounded-lg transition duration-200 transform hover:scale-105 mt-4">
+                        Solicitar Código
+                    </button>
                 </div>
 
-                <div class="form-step" id="step2" style="display: none;">
-                    <div class="form-group">
-                        <label for="codigo">Código de Confirmação</label>
-                        <input type="text" id="codigo" name="codigo" required placeholder="000000" maxlength="6">
+                <div id="step2" class="space-y-4 hidden">
+                    <div>
+                        <label for="codigo" class="block text-sm font-medium text-gray-700 mb-1">Código de Confirmação</label>
+                        <input type="text" id="codigo" name="codigo" required placeholder="000000" maxlength="6"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition text-center text-2xl tracking-widest">
                     </div>
-                    <div class="form-group">
-                        <label for="novaSenha">Nova Senha</label>
-                        <input type="password" id="novaSenha" name="novaSenha" required placeholder="••••••••" minlength="6">
+                    <div>
+                        <label for="novaSenha" class="block text-sm font-medium text-gray-700 mb-1">Nova Senha</label>
+                        <input type="password" id="novaSenha" name="novaSenha" required placeholder="••••••••" minlength="6"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition">
                     </div>
-                    <div class="form-group">
-                        <label for="confirmarSenha">Confirmar Senha</label>
-                        <input type="password" id="confirmarSenha" name="confirmarSenha" required placeholder="••••••••" minlength="6">
+                    <div>
+                        <label for="confirmarSenha" class="block text-sm font-medium text-gray-700 mb-1">Confirmar Senha</label>
+                        <input type="password" id="confirmarSenha" name="confirmarSenha" required placeholder="••••••••" minlength="6"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition">
                     </div>
-                    <button type="submit" class="btn btn-primary">Confirmar</button>
+                    <button type="submit"
+                        class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-4 rounded-lg transition duration-200 transform hover:scale-105">
+                        Confirmar
+                    </button>
                 </div>
 
-                <div class="form-footer">
-                    <a href="#" id="voltarLoginLink">Voltar ao Login</a>
+                <div class="text-center mt-4">
+                    <a href="#" id="voltarLoginLink" class="text-primary hover:text-accent font-medium text-sm">
+                        Voltar ao Login
+                    </a>
                 </div>
             </form>
         </div>
     </div>
 
-    <div id="notification" class="notification"></div>
+    <!-- Notificações -->
+    <div id="notification" 
+        class="fixed top-4 right-4 px-6 py-4 rounded-lg shadow-lg font-medium text-white transform translate-y-0 transition-all duration-300 opacity-0 -translate-y-4 z-50">
+    </div>
 
     <script src="js/auth.js"></script>
 </body>

@@ -5,10 +5,23 @@ RewriteBase /
 RewriteCond %{REQUEST_URI} ^/api/
 RewriteRule ^api/(.*)$ api/index.php [QSA,L]
 
-# Public files (CSS, JS, images)
+# Arquivos estáticos (CSS, JS, imagens) - servir diretamente da pasta public
+RewriteCond %{REQUEST_URI} ^/(css|js|assets|images)/
+RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -f
+RewriteRule ^(.*)$ public/$1 [L]
+
+# Páginas HTML da pasta public/pages
+RewriteCond %{REQUEST_URI} ^/pages/
+RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -f
+RewriteRule ^(.*)$ public/$1 [L]
+
+# Se o arquivo existe, serve ele
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteRule ^ - [L]
 
-# Redirect all other requests to public/index.html
+# Página inicial
 RewriteRule ^$ public/index.html [L]
+
+# Tudo mais vai para public
+RewriteCond %{REQUEST_URI} !^/public/
 RewriteRule ^(.*)$ public/$1 [L]
