@@ -1,5 +1,5 @@
 -- Dados de Exemplo para Testes
-USE advportal_db;
+USE u230868210_portaladvmarqu;
 
 -- Usuários de Exemplo (senha para todos: Senha@123)
 INSERT INTO usuarios (nome, email, senha, perfil_id, status, primeiro_acesso, telefone, cpf) VALUES

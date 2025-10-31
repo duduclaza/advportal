@@ -1,8 +1,9 @@
 -- Portal de Gerenciamento de Processos Jurídicos
 -- Schema do Banco de Dados
 
-CREATE DATABASE IF NOT EXISTS advportal_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE advportal_db;
+-- Para servidor remoto (Hostinger), comente a linha abaixo se o banco já existe
+-- CREATE DATABASE IF NOT EXISTS u230868210_portaladvmarqu CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE u230868210_portaladvmarqu;
 
 -- Tabela de Perfis
 CREATE TABLE IF NOT EXISTS perfis (
